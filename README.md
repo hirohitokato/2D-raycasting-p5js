@@ -1,6 +1,6 @@
-# p5.js Template PETR+
+# Coding challenge: 2D raycasting with p5.js
 
-*Other languages (wiki):* [[ ja ]](https://github.com/fal-works/p5js-template-petr-plus/wiki/Readme-ja)
+This repository simulates 2D Raycasting with p5.js. You can see the original version on https://youtu.be/TOEi6T2mtHo .
 
 ## About
 
