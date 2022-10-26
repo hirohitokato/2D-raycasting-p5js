@@ -2,7 +2,7 @@
 
 This repository simulates 2D Raycasting with p5.js. You can see the original version on https://youtu.be/TOEi6T2mtHo .
 
-<!-- insert a GIF image. -->
+![](https://raw.githubusercontent.com/hirohitokato/myAssets/main/2d-raycasting/2d-raycasting.gif)
 
 ## Notes
 
