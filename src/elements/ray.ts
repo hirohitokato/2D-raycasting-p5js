@@ -8,18 +8,24 @@ import { Vector } from "p5";
 import { Boundary } from "./boundary";
 
 export class Ray {
+  pos: p5.Vector;
   dir: p5.Vector;
 
-  constructor(private p: p5, public pos: p5.Vector, angle: number) {
+  constructor(private p: p5, position: p5.Vector, angle: number) {
+    this.pos = position;
     this.dir = Vector.fromAngle(angle);
   }
 
   lookAt(x: number, y: number) {
     this.dir.x = x - this.pos.x;
     this.dir.y = y - this.pos.y;
+    // 単位ベクトル化
     this.dir.normalize();
   }
 
+  /**
+   * レイ(単位ベクトル)を描画
+   */
   show() {
     this.p.stroke(255);
     this.p.push();
@@ -28,7 +34,13 @@ export class Ray {
     this.p.pop();
   }
 
-  cast(wall: Boundary) {
+  /**
+   * 指定した壁に対してレイを飛ばしたときに交差するかどうかを判定し
+   * 交差する場合はその交点座標、しない場合はundefinedを返す
+   * @param wall 対象となる壁
+   * @returns 壁とレイとの交点座標
+   */
+  cast(wall: Boundary): p5.Vector | undefined {
     const x1 = wall.a.x;
     const y1 = wall.a.y;
     const x2 = wall.b.x;

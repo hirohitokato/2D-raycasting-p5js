@@ -5,6 +5,9 @@
  */
 import type p5 from "p5";
 
+/**
+ * 壁。２点a,bを結ぶ線分として表現する
+ */
 export class Boundary {
   a: p5.Vector;
   b: p5.Vector;
