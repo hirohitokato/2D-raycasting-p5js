@@ -1,6 +1,6 @@
 # Coding challenge: 2D raycasting with p5.js
 
-This repository simulates 2D Raycasting with p5.js. You can see the original version on https://youtu.be/TOEi6T2mtHo .
+This repository simulates 2D Raycasting with p5.js. You can see the original at https://youtu.be/TOEi6T2mtHo .
 
 ![](https://raw.githubusercontent.com/hirohitokato/myAssets/main/2d-raycasting/2d-raycasting.gif)
 
