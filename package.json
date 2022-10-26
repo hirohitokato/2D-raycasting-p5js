@@ -18,5 +18,8 @@
     "preformat:dist": "eslint --fix --no-ignore dist/script.js",
     "format:dist": "prettier --write dist/script.js",
     "minify": "terser dist/script.js --output dist/script.min.js --compress --mangle"
+  },
+  "dependencies": {
+    "pnpm": "^7.14.0"
   }
 }
