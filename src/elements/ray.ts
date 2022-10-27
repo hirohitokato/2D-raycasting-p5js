@@ -67,4 +67,8 @@ export class Ray {
       return;
     }
   }
+
+  cast2(wall: Boundary): p5.Vector | undefined {
+    return;
+  }
 }

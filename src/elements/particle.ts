@@ -33,6 +33,9 @@ export class Particle {
    * @param walls 壁の一覧
    */
   look(walls: Boundary[]) {
+    for (const wall of walls) {
+    }
+
     for (let i = 0; i < this.rays.length; i++) {
       const ray = this.rays[i]!;
       let closest: p5.Vector | null = null;
@@ -57,8 +60,8 @@ export class Particle {
         // or monochrome ray
         // this.p.stroke((i + this.p.frameCount * 2) % 360, 255, 255, 50);
 
-        this.p.stroke(255, 100);
-        this.p.line(this.pos.x, this.pos.y, closest.x, closest.y);
+        // this.p.stroke(255, 100);
+        // this.p.line(this.pos.x, this.pos.y, closest.x, closest.y);
       }
     }
   }
