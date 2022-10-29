@@ -16,6 +16,12 @@ export class Ray {
     this.dir = Vector.fromAngle(angle);
   }
 
+  static fromTwoPoints(p: p5, fromPosition: p5.Vector, toPosition: p5.Vector): Ray {
+    let v = new Ray(p, fromPosition, 0);
+    v.dir = fromPosition.sub(toPosition);
+    return v;
+  }
+
   lookAt(x: number, y: number) {
     this.dir.x = x - this.pos.x;
     this.dir.y = y - this.pos.y;
@@ -66,9 +72,5 @@ export class Ray {
     } else {
       return;
     }
-  }
-
-  cast2(wall: Boundary): p5.Vector | undefined {
-    return;
   }
 }
