@@ -11,7 +11,7 @@ export const setup = (p: p5): void => {
   p.createCanvas(400, 400);
 
   // Create walls
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 10; i++) {
     // randomly located walls
     let x1 = p.random(p.width);
     let x2 = p.random(p.width);

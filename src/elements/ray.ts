@@ -17,8 +17,8 @@ export class Ray {
   }
 
   static fromTwoPoints(p: p5, fromPosition: p5.Vector, toPosition: p5.Vector): Ray {
-    let v = new Ray(p, fromPosition, 0);
-    v.dir = fromPosition.sub(toPosition);
+    let v = new Ray(p, fromPosition.copy(), 0);
+    v.dir = fromPosition.sub(toPosition).copy();
     return v;
   }
 
@@ -54,8 +54,8 @@ export class Ray {
 
     const x3 = this.pos.x;
     const y3 = this.pos.y;
-    const x4 = this.pos.x + this.dir.x;
-    const y4 = this.pos.y + this.dir.y;
+    const x4 = this.pos.x - this.dir.x;
+    const y4 = this.pos.y - this.dir.y;
 
     const den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
     if (den == 0) {
@@ -64,7 +64,7 @@ export class Ray {
 
     const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / den;
     const u = ((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / den;
-    if (t > 0 && t < 1 && u > 0) {
+    if (t > 0.001 && t < 0.999 && u > 0.001) {
       const pt = this.p.createVector();
       pt.x = x1 + t * (x2 - x1);
       pt.y = y1 + t * (y2 - y1);

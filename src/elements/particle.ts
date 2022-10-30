@@ -35,25 +35,20 @@ export class Particle {
   look(walls: Boundary[]) {
     let points: p5.Vector[] = [];
     for (const wall of walls) {
-      points.push(wall.a, wall.b);
+      points.push(wall.a.copy(), wall.b.copy());
     }
 
     let rays: Ray[] = [];
-    let point = points[0]!;
-    {
-      // for (const point of points) {
+    for (const point of points) {
       // this.posとのrayを作成、cast()
       // rayはraysに保存
-      // const ray = new Ray(this.p, this.pos, 0);
-      const ray = Ray.fromTwoPoints(this.p, this.pos, point);
-      ray.lookAt(point.x, point.y);
+      const ray = new Ray(this.p, this.pos, 0);
       // const ray = Ray.fromTwoPoints(this.p, this.pos, point);
-      this.p.stroke(255, 100);
-      this.p.line(ray.pos.x, ray.pos.y, ray.dir.x, ray.dir.y);
+      ray.lookAt(point.x, point.y);
 
       let closest: p5.Vector | null = null;
       let record = Infinity;
-      console.log(`ray: pos(${ray.pos.x},${ray.pos.y})->(${ray.dir.x},${ray.dir.y})`);
+
       // すべての壁に対してレイを飛ばして、交点までの距離がもっとも短い箇所を採用する
       for (const wall of walls) {
         const pt = ray.cast(wall);
@@ -68,7 +63,6 @@ export class Particle {
 
       if (closest) {
         this.p.stroke(255, 100);
-        console.log(` --> ray: pos(${this.pos.x},${this.pos.y})->(${closest.x},${closest.y})`);
         this.p.line(this.pos.x, this.pos.y, closest.x, closest.y);
       }
     }
