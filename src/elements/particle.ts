@@ -10,13 +10,9 @@ import { Ray } from "./ray";
 
 export class Particle {
   pos: p5.Vector;
-  rays: Ray[] = [];
 
   constructor(private p: p5) {
     this.pos = p.createVector(p.width / 2, p.height / 2);
-    for (let i = 0; i < 360; i++) {
-      this.rays.push(new Ray(p, this.pos, p.radians(i)));
-    }
   }
 
   /**
@@ -34,6 +30,7 @@ export class Particle {
    */
   look(walls: Boundary[]) {
     let points: p5.Vector[] = [];
+    // 各壁の端になる座標のみ集める
     for (const wall of walls) {
       points.push(wall.a.copy(), wall.b.copy());
     }
@@ -51,6 +48,7 @@ export class Particle {
 
       // すべての壁に対してレイを飛ばして、交点までの距離がもっとも短い箇所を採用する
       for (const wall of walls) {
+        // 壁に当たった場合の座標が返る
         const pt = ray.cast(wall);
         if (pt) {
           const d = Vector.dist(this.pos, pt);
@@ -66,41 +64,10 @@ export class Particle {
         this.p.line(this.pos.x, this.pos.y, closest.x, closest.y);
       }
     }
-
-    // for (let i = 0; i < this.rays.length; i++) {
-    //   const ray = this.rays[i]!;
-    //   let closest: p5.Vector | null = null;
-    //   let record = Infinity;
-
-    //   // すべての壁に対してレイを飛ばして、交点までの距離が
-    //   // もっとも短い箇所を採用する
-    //   for (const wall of walls) {
-    //     const pt = ray.cast(wall);
-    //     if (pt) {
-    //       const d = Vector.dist(this.pos, pt);
-    //       if (d < record) {
-    //         record = d;
-    //         closest = pt;
-    //       }
-    //     }
-    //   }
-
-    //   if (closest) {
-    //     // Coloful ray
-    //     // this.p.colorMode(this.p.HSB);
-    //     // this.p.stroke((i + this.p.frameCount * 2) % 360, 255, 255, 50);
-    //     // or monochrome ray
-    //     this.p.stroke(255, 100);
-    //     this.p.line(this.pos.x, this.pos.y, closest.x, closest.y);
-    //   }
-    // }
   }
 
   show() {
     this.p.fill(255);
     this.p.ellipse(this.pos.x, this.pos.y, 4);
-    // for (const ray of this.rays) {
-    //   ray.show();
-    // }
   }
 }
