@@ -19,7 +19,7 @@ export const setup = (p: p5): void => {
     let y2 = p.random(p.height);
     walls.push(new Boundary(p, x1, y1, x2, y2));
   }
-  // outsides
+  // 外壁を設置
   walls.push(new Boundary(p, -1, -1, p.width, -1));
   walls.push(new Boundary(p, p.width, -1, p.width, p.height));
   walls.push(new Boundary(p, p.width, p.height, -1, p.height));
