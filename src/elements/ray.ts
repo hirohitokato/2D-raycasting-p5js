@@ -54,6 +54,7 @@ export class Ray {
 
     const x3 = this.pos.x;
     const y3 = this.pos.y;
+
     // 注：オリジナルではここを足し算で求めていたが引き算に変更。
     // レイの方向を逆にするため(と意図しているが理解しきれていない...)
     const x4 = this.pos.x - this.dir.x;
