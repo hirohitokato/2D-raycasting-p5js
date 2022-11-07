@@ -28,3 +28,7 @@ export const setup = (p: p5): void => {
   // Actor(particle)
   particle = new Particle(p);
 };
+
+export const windowResized = (p: p5, event?: Event): void => {
+  p.resizeCanvas(p.windowWidth, p.windowHeight);
+};
